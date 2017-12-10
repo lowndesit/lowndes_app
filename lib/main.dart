@@ -300,7 +300,7 @@ class _MyItemsPageState extends State<MyItemsPage> {
 }
 
 
-////LocalCompanies
+////LocalCompaniesPage
 
 class $NAME$ extends StatefulWidget {
   $NAME$({Key key, this.title}) : super(key: key);
