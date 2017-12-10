@@ -11,6 +11,8 @@ class MyApp extends StatelessWidget {
     var routes = <String, WidgetBuilder>{
       MyItemsPage.routeName: (BuildContext context) =>
           new MyItemsPage(title: "MyItemsPage"),
+      MyInfoPage.routeName: (BuildContext context) =>
+          new MyInfoPage(title: "MyInfoPage"),
     };
 
     return new MaterialApp(
@@ -202,9 +204,10 @@ class _MyItemsPageState extends State<MyItemsPage> {
         children: [
           new Icon(icon, color: color, size: 50.0),
           new Container(
-            margin: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+            margin:
+                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
             child: new Text(
-                label,
+              label,
               style: new TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.w400,
@@ -219,12 +222,12 @@ class _MyItemsPageState extends State<MyItemsPage> {
     Widget buttonRow1 = new Container(
         padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 40.0),
         child: new Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        buildButtonColumn1(Icons.info, 'My Info'),
-        buildButtonColumn1(Icons.camera, 'Submit An Issue')
-      ],
-    ));
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            buildButtonColumn1(Icons.info, 'My Info'),
+            buildButtonColumn1(Icons.camera, 'Submit An Issue')
+          ],
+        ));
 
     //rowBuild
 
@@ -237,49 +240,50 @@ class _MyItemsPageState extends State<MyItemsPage> {
     ///row2
 
     Column buildButtonColumn2(IconData icon, String label) {
-    Color color = Theme.of(context).primaryColor;
+      Color color = Theme.of(context).primaryColor;
 
-    return new Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        new Icon(icon, color: color, size: 50.0),
-        new Container(
-          margin: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
-          child: new Text(
-            label,
-            style: new TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w400,
-              color: color,
+      return new Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          new Icon(icon, color: color, size: 50.0),
+          new Container(
+            margin:
+                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+            child: new Text(
+              label,
+              style: new TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400,
+                color: color,
+              ),
             ),
           ),
-        ),
+        ],
+      );
+    }
+
+    Widget buttonRow2 = new Container(
+        padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 20.0),
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            buildButtonColumn2(Icons.payment, 'Pay My Bill'),
+            buildButtonColumn2(Icons.business, 'Local Companies')
+          ],
+        ));
+
+    //rowBuild
+
+    Widget row2 = new Row(
+      children: <Widget>[
+        buttonRow2,
       ],
     );
-  }
 
-  Widget buttonRow2 = new Container(
-      padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 20.0),
-      child: new Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          buildButtonColumn2(Icons.payment, 'Pay My Bill'),
-          buildButtonColumn2(Icons.business, 'Local Companies')
-        ],
-      ));
+    ///myInfoButton
 
 
-  //payMyBill
-
-  Widget localCompanies = new FloatingActionButton(onPressed: null)
-  //rowBuild
-
-  Widget row2 = new Row(
-    children: <Widget>[
-      buttonRow2,
-    ],
-  );
 
     ///page
 
@@ -299,45 +303,47 @@ class _MyItemsPageState extends State<MyItemsPage> {
   }
 }
 
+////MyInfoPage
 
-////LocalCompaniesPage
+class MyInfoPage extends StatefulWidget {
+  MyInfoPage({Key key, this.title}) : super(key: key);
 
-class $NAME$ extends StatefulWidget {
-  $NAME$({Key key, this.title}) : super(key: key);
-
-  static const String routeName = "/$NAME$";
+  static const String routeName = "/MyInfoPage";
 
   final String title;
 
   @override
-  _$NAME$State createState() => new _$NAME$State();
+  _MyInfoPageState createState() => new _MyInfoPageState();
 }
 
 /// // 1. After the page has been created, register it with the app routes
 /// routes: <String, WidgetBuilder>{
-///   $NAME$.routeName: (BuildContext context) => new $NAME$(title: "$NAME$"),
+///   MyInfoPage.routeName: (BuildContext context) => new MyInfoPage(title: "MyInfoPage"),
 /// },
 ///
 /// // 2. Then this could be used to navigate to the page.
-/// Navigator.pushNamed(context, $NAME$.routeName);
+/// Navigator.pushNamed(context, MyInfoPage.routeName);
 ///
 
-class _$NAME$State extends State<$NAME$> {
+class _MyInfoPageState extends State<MyInfoPage> {
   @override
   Widget build(BuildContext context) {
+
+    ///myInfoColumn
+
+
+
+    ///page
+
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(widget.title),
+        title: new Text("My Info"),
       ),
-      body: new Container($END$),
-      floatingActionButton: new FloatingActionButton(
-        onPressed: _onFloatingActionButtonPressed,
-        tooltip: 'Add',
-        child: new Icon(Icons.add),
+      body: new Container(
+        child: new Column(
+          children: <Widget>[],
+        ),
       ),
     );
-  }
-
-  void _onFloatingActionButtonPressed() {
   }
 }
