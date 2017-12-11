@@ -14,6 +14,8 @@ class MyApp extends StatelessWidget {
           new MyItemsPage(title: "MyItemsPage"),
       MyInfoPage.routeName: (BuildContext context) =>
           new MyInfoPage(title: "MyInfoPage"),
+      myCamPage.routeName: (BuildContext context) =>
+          new myCamPage(title: "myCamPage"),
     };
 
     return new MaterialApp(
@@ -362,5 +364,47 @@ class _MyInfoPageState extends State<MyInfoPage> {
         ),
       ),
     );
+  }
+}
+
+//// myCamPage
+
+class myCamPage extends StatefulWidget {
+  myCamPage({Key key, this.title}) : super(key: key);
+
+  static const String routeName = "/myCamPage";
+
+  final String title;
+
+  @override
+  _myCamPageState createState() => new _myCamPageState();
+}
+
+/// // 1. After the page has been created, register it with the app routes
+/// routes: <String, WidgetBuilder>{
+///   myCamPage.routeName: (BuildContext context) => new myCamPage(title: "myCamPage"),
+/// },
+///
+/// // 2. Then this could be used to navigate to the page.
+/// Navigator.pushNamed(context, myCamPage.routeName);
+///
+
+class _myCamPageState extends State<myCamPage> {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(widget.title),
+      ),
+      body: new Container(),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: _onFloatingActionButtonPressed,
+        tooltip: 'Add',
+        child: new Icon(Icons.add),
+      ),
+    );
+  }
+
+  void _onFloatingActionButtonPressed() {
   }
 }
