@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(new MyApp());
@@ -193,6 +194,18 @@ class _MyItemsPageState extends State<MyItemsPage> {
   @override
   Widget build(BuildContext context) {
 
+
+    ///launchUtilPayURL
+
+    _launchUtilPayURL() async {
+      const url = 'http://ecommerce.lowndescounty.com/';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else{
+        throw 'Could not launch $url';
+      }
+    }
+
     ///row1
 
     Column buildButtonColumn1(IconData icon, String label) {
@@ -267,9 +280,12 @@ class _MyItemsPageState extends State<MyItemsPage> {
         padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 20.0),
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            buildButtonColumn2(Icons.payment, 'Pay My Bill'),
-            buildButtonColumn2(Icons.business, 'Local Companies')
+          children: <Widget>[
+            new IconButton(
+              icon: new Icon(Icons.payment),
+              tooltip: 'Pay your Utility Bill',
+              onPressed: _launchUtilPayURL,
+    ),
           ],
         ));
 
@@ -347,4 +363,3 @@ class _MyInfoPageState extends State<MyInfoPage> {
     );
   }
 }
-1
