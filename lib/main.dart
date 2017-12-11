@@ -11,11 +11,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var routes = <String, WidgetBuilder>{
       MyItemsPage.routeName: (BuildContext context) =>
-          new MyItemsPage(title: "MyItemsPage"),
+      new MyItemsPage(title: "MyItemsPage"),
       MyInfoPage.routeName: (BuildContext context) =>
-          new MyInfoPage(title: "MyInfoPage"),
+      new MyInfoPage(title: "MyInfoPage"),
       myCamPage.routeName: (BuildContext context) =>
-          new myCamPage(title: "myCamPage"),
+      new myCamPage(title: "myCamPage"),
     };
 
     return new MaterialApp(
@@ -135,9 +135,9 @@ class _MyHomePageState extends State<MyHomePage> {
     Text child2 = new Text("Second");
 
     var pad =
-        const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
+    const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
     var pad2 =
-        const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
+    const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
 
     Padding padding = new Padding(child: child1, padding: pad);
     Padding padding2 = new Padding(child: child2, padding: pad2);
@@ -209,19 +209,27 @@ class _MyItemsPageState extends State<MyItemsPage> {
       }
     }
 
+    ///launchMyInfoPage
+
+    void _launchMyInfoPage() {
+      Navigator.pushNamed(context, MyInfoPage.routeName);
+    }
+
     ///row1
 
-    Column buildButtonColumn1(IconData icon, String label) {
+    Column buildButtonColumn1(IconData icon, String label, onPress) {
       Color color = Theme.of(context).primaryColor;
 
       return new Column(
-        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          new Icon(icon, color: color, size: 50.0),
+        children: <Widget>[
+          new IconButton(
+            icon: new Icon(icon, color: color, size: 50.0),
+            onPressed: onPress,
+          ),
           new Container(
             margin:
-                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+            const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
             child: new Text(
               label,
               style: new TextStyle(
@@ -240,8 +248,8 @@ class _MyItemsPageState extends State<MyItemsPage> {
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            buildButtonColumn1(Icons.info, 'My Info'),
-            buildButtonColumn1(Icons.camera, 'Submit An Issue')
+            buildButtonColumn1(Icons.info, 'My Info', _launchMyInfoPage),
+            buildButtonColumn1(Icons.camera, 'Submit An Issue', null)
           ],
         ));
 
@@ -255,17 +263,20 @@ class _MyItemsPageState extends State<MyItemsPage> {
 
     ///row2
 
-    Column buildButtonColumn2(IconData icon, String label) {
+    Column buildButtonColumn2(IconData icon, String label, onPress) {
       Color color = Theme.of(context).primaryColor;
 
       return new Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          new Icon(icon, color: color, size: 50.0),
+        children: <Widget>[
+          new IconButton(
+            icon: new Icon(icon, color: color, size: 50.0),
+            onPressed: onPress,
+          ),
           new Container(
             margin:
-                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+            const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
             child: new Text(
               label,
               style: new TextStyle(
@@ -284,11 +295,8 @@ class _MyItemsPageState extends State<MyItemsPage> {
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            new IconButton(
-              icon: new Icon(Icons.payment),
-              tooltip: 'Pay your Utility Bill',
-              onPressed: _launchUtilPayURL,
-    ),
+            buildButtonColumn2(Icons.payment, 'Make a Payment', _launchUtilPayURL),
+            buildButtonColumn2(Icons.business, 'Local Companies', null),
           ],
         ));
 
