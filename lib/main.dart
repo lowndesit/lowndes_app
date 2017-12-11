@@ -215,6 +215,11 @@ class _MyItemsPageState extends State<MyItemsPage> {
       Navigator.pushNamed(context, MyInfoPage.routeName);
     }
 
+    ///launch CamPage
+
+    void _launchMyCamPage() {
+      Navigator.pushNamed(context, myCamPage.routeName);
+    }
     ///row1
 
     Column buildButtonColumn1(IconData icon, String label, onPress) {
@@ -249,7 +254,7 @@ class _MyItemsPageState extends State<MyItemsPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             buildButtonColumn1(Icons.info, 'My Info', _launchMyInfoPage),
-            buildButtonColumn1(Icons.camera, 'Submit An Issue', null)
+            buildButtonColumn1(Icons.camera, 'Submit An Issue', _launchMyCamPage)
           ],
         ));
 
@@ -405,14 +410,6 @@ class _myCamPageState extends State<myCamPage> {
         title: new Text(widget.title),
       ),
       body: new Container(),
-      floatingActionButton: new FloatingActionButton(
-        onPressed: _onFloatingActionButtonPressed,
-        tooltip: 'Add',
-        child: new Icon(Icons.add),
-      ),
     );
-  }
-
-  void _onFloatingActionButtonPressed() {
   }
 }
