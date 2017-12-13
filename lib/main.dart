@@ -1,8 +1,14 @@
 import 'dart:async';
+import 'dart:io';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:image_picker/image_picker.dart';
+
+final Random random = new Random();
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn _googleSignIn = new GoogleSignIn();
@@ -64,6 +70,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   @override
   Widget build(BuildContext context) {
 
@@ -433,13 +440,36 @@ class myCamPage extends StatefulWidget {
 ///
 
 class _myCamPageState extends State<myCamPage> {
+  Future<File> _imageFile;
+
   @override
   Widget build(BuildContext context) {
+
+    ///imagePicker
+
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(widget.title),
+        title: const Text('Image Picker Example'),
       ),
-      body: new Container(),
+      body: new Center(
+          child: new FutureBuilder<File>(
+              future: _imageFile,
+              builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return new Image.file(snapshot.data);
+                } else {
+                  return const Text('You have not yet picked an image.');
+                }
+              })),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _imageFile = ImagePicker.pickImage();
+          });
+        },
+        tooltip: 'Pick Image',
+        child: new Icon(Icons.add_a_photo),
+      ),
     );
   }
 }
