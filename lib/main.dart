@@ -450,7 +450,17 @@ class _myCamPageState extends State<myCamPage> {
 
     return new Scaffold(
       appBar: new AppBar(
-        title: const Text('Image Picker Example'),
+        actions: <Widget>[
+          new ButtonBar(
+            children: <Widget>[
+              new FlatButton(
+                  onPressed: null, 
+                  child: new Text("Submit"),
+              ),
+            ],
+          ),
+        ],
+        title: const Text('Your Issue'),
       ),
       body: new Center(
           child: new FutureBuilder<File>(
