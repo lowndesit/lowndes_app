@@ -1,5 +1,30 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
+final GoogleSignIn _googleSignIn = new GoogleSignIn();
+
+Future<String> _testSignInWithGoogle() async {
+  final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+  final GoogleSignInAuthentication googleAuth =
+  await googleUser.authentication;
+  final FirebaseUser user = await _auth.signInWithGoogle(
+    accessToken: googleAuth.accessToken,
+    idToken: googleAuth.idToken,
+  );
+  assert(user.email != null);
+  assert(user.displayName != null);
+  assert(!user.isAnonymous);
+  assert(await user.getIdToken() != null);
+
+  final FirebaseUser currentUser = await _auth.currentUser();
+  assert(user.uid == currentUser.uid);
+
+  return 'signInWithGoogle succeeded: $user';
+}
 
 void main() {
   runApp(new MyApp());
@@ -118,12 +143,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
     Widget loginButton = new Align(
       alignment: const Alignment(0.0, -0.2),
-      child: new ButtonBar(
+      child: new Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           new FlatButton(
             child: const Text('Login'),
             onPressed: _loginButton,
+          ),
+          new FlatButton(
+              onPressed: _testSignInWithGoogle,
+              child: new Image.asset('assets/btn_signinwithgoogle.png',
+              ),
           ),
         ],
       ),

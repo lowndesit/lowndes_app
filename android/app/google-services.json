@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "98856771677",
+    "firebase_url": "https://lowndesapp-6013e.firebaseio.com",
+    "project_id": "lowndesapp-6013e",
+    "storage_bucket": "lowndesapp-6013e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98856771677:android:fc80de830e2ab1c1",
+        "android_client_info": {
+          "package_name": "com.lowndescounty.lowndesco.flutterapp.flutterapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98856771677-01qvhp5ekagdr4c66mgnrajnfi0flofk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lowndescounty.lowndesco.flutterapp.flutterapp",
+            "certificate_hash": "fa76cbea53e4b9a74843b9013fdbc57faeabed88"
+          }
+        },
+        {
+          "client_id": "98856771677-3qgrkhn6g4lhotu14uq9igqan1t9tn8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZso7Zj2bZHkgzSIKEJizfF9--IaHaLGY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98856771677-3qgrkhn6g4lhotu14uq9igqan1t9tn8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
