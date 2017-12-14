@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       myCamPage.routeName: (BuildContext context) =>
           new myCamPage(title: "myCamPage"),
       mySubmitImagePage.routeName: (BuildContext context) =>
-      new mySubmitImagePage(title: "mySubmitImagePage"),
+          new mySubmitImagePage(title: "mySubmitImagePage"),
     };
 
     return new MaterialApp(
@@ -385,15 +385,6 @@ class MyInfoPage extends StatefulWidget {
   _MyInfoPageState createState() => new _MyInfoPageState();
 }
 
-/// // 1. After the page has been created, register it with the app routes
-/// routes: <String, WidgetBuilder>{
-///   MyInfoPage.routeName: (BuildContext context) => new MyInfoPage(title: "MyInfoPage"),
-/// },
-///
-/// // 2. Then this could be used to navigate to the page.
-/// Navigator.pushNamed(context, MyInfoPage.routeName);
-///
-
 class _MyInfoPageState extends State<MyInfoPage> {
   @override
   Widget build(BuildContext context) {
@@ -427,26 +418,49 @@ class myCamPage extends StatefulWidget {
   _myCamPageState createState() => new _myCamPageState();
 }
 
-/// // 1. After the page has been created, register it with the app routes
-/// routes: <String, WidgetBuilder>{
-///   myCamPage.routeName: (BuildContext context) => new myCamPage(title: "myCamPage"),
-/// },
-///
-/// // 2. Then this could be used to navigate to the page.
-/// Navigator.pushNamed(context, myCamPage.routeName);
-///
-
 class _myCamPageState extends State<myCamPage> {
   Future<File> _imageFile;
 
   @override
   Widget build(BuildContext context) {
-
-    ///imagePicker
-
     void _mySubmitImagePageState() {
       Navigator.pushNamed(context, mySubmitImagePage.routeName);
     }
+
+    ///inputDesc
+
+    Widget inputIssueDesc = new TextField(
+      textAlign: TextAlign.center,
+      decoration: new InputDecoration.collapsed(
+        hintText: "Enter Issue Description",
+      ),
+      obscureText: false,
+    );
+
+    Widget issueDesc = new FractionallySizedBox(
+      widthFactor: 0.70666666666, // 265 / 375
+      child: new Container(
+        height: 44.0,
+        child: new Center(child: new Container(child: inputIssueDesc)),
+        decoration: new BoxDecoration(
+            color: Colors.white, borderRadius: new BorderRadius.circular(3.0)),
+      ),
+    );
+
+    ///imagePicker
+
+    Widget futureBuilder = new FutureBuilder<File>(
+      future: _imageFile,
+      builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return new Image.file(snapshot.data);
+        } else {
+          return const Text('You have not yet picked an image.');
+        }
+      },
+    );
+
+    ///page
 
     return new Scaffold(
       appBar: new AppBar(
@@ -456,7 +470,7 @@ class _myCamPageState extends State<myCamPage> {
               new FlatButton(
                 onPressed: _mySubmitImagePageState,
                 child: new Text(
-                  "Next",
+                  "< Next >",
                   style: new TextStyle(
                     fontSize: 17.0,
                     color: Colors.white,
@@ -469,38 +483,11 @@ class _myCamPageState extends State<myCamPage> {
         title: const Text('Submit Issue'),
       ),
       body: new Container(
-        child: new Column(
-          children: <Widget>[
-            new FutureBuilder<File>(
-              future: _imageFile,
-              builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  return new Image.file(snapshot.data);
-                } else {
-                  return const Text('You have not yet picked an image.');
-                }
-              },
-              ),
-        new TextField(
-        textAlign: TextAlign.center,
-        decoration: new InputDecoration.collapsed(
-          hintText: "Username",
-        ),
-        obscureText: false,
-      ),
-
-      new FractionallySizedBox(
-      widthFactor: 0.70666666666, // 265 / 375
-      child: new Container(
-        height: 44.0,
-        child: new Center(child: new Container(child: inputUsername)),
-        decoration: new BoxDecoration(
-            color: Colors.white, borderRadius: new BorderRadius.circular(3.0)),
-      ),
-    ),
-          ]
-        )
-      ),
+          child: new Center(
+              child: new Column(children: <Widget>[
+        futureBuilder,
+        issueDesc,
+      ]))),
       floatingActionButton: new FloatingActionButton(
         onPressed: () {
           setState(() {
@@ -527,15 +514,6 @@ class mySubmitImagePage extends StatefulWidget {
   _mySubmitImagePageState createState() => new _mySubmitImagePageState();
 }
 
-/// // 1. After the page has been created, register it with the app routes
-/// routes: <String, WidgetBuilder>{
-///   mySubmitImagePage.routeName: (BuildContext context) => new mySubmitImagePage(title: "mySubmitImagePage"),
-/// },
-///
-/// // 2. Then this could be used to navigate to the page.
-/// Navigator.pushNamed(context, mySubmitImagePage.routeName);
-///
-
 class _mySubmitImagePageState extends State<mySubmitImagePage> {
   @override
   Widget build(BuildContext context) {
@@ -546,13 +524,10 @@ class _mySubmitImagePageState extends State<mySubmitImagePage> {
       body: new Container(
         child: new Center(
           child: new Column(
-            children: [
-              new Image(image: null)
-            ],
+            children: [new Image(image: null)],
           ),
         ),
       ),
     );
   }
 }
-
