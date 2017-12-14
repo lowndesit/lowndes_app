@@ -16,8 +16,7 @@ final GoogleSignIn _googleSignIn = new GoogleSignIn();
 
 Future<String> _testSignInWithGoogle() async {
   final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-  final GoogleSignInAuthentication googleAuth =
-  await googleUser.authentication;
+  final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
   final FirebaseUser user = await _auth.signInWithGoogle(
     accessToken: googleAuth.accessToken,
     idToken: googleAuth.idToken,
@@ -43,11 +42,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var routes = <String, WidgetBuilder>{
       MyItemsPage.routeName: (BuildContext context) =>
-      new MyItemsPage(title: "MyItemsPage"),
+          new MyItemsPage(title: "MyItemsPage"),
       MyInfoPage.routeName: (BuildContext context) =>
-      new MyInfoPage(title: "MyInfoPage"),
+          new MyInfoPage(title: "MyInfoPage"),
       myCamPage.routeName: (BuildContext context) =>
-      new myCamPage(title: "myCamPage"),
+          new myCamPage(title: "myCamPage"),
+      mySubmitImagePage.routeName: (BuildContext context) =>
+      new mySubmitImagePage(title: "mySubmitImagePage"),
     };
 
     return new MaterialApp(
@@ -71,10 +72,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
-
     ///titleSection
 
     Widget titleSection = new Container(
@@ -159,9 +158,10 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: _loginButton,
           ),
           new FlatButton(
-              onPressed: _testSignInWithGoogle,
-              child: new Image.asset('assets/btn_signinwithgoogle.png',
-              ),
+            onPressed: _testSignInWithGoogle,
+            child: new Image.asset(
+              'assets/btn_signinwithgoogle.png',
+            ),
           ),
         ],
       ),
@@ -173,9 +173,9 @@ class _MyHomePageState extends State<MyHomePage> {
     Text child2 = new Text("Second");
 
     var pad =
-    const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
+        const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
     var pad2 =
-    const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
+        const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
 
     Padding padding = new Padding(child: child1, padding: pad);
     Padding padding2 = new Padding(child: child2, padding: pad2);
@@ -234,15 +234,13 @@ class MyItemsPage extends StatefulWidget {
 class _MyItemsPageState extends State<MyItemsPage> {
   @override
   Widget build(BuildContext context) {
-
-
     ///launchUtilPayURL
 
     _launchUtilPayURL() async {
       const url = 'http://ecommerce.lowndescounty.com/';
       if (await canLaunch(url)) {
         await launch(url);
-      } else{
+      } else {
         throw 'Could not launch $url';
       }
     }
@@ -258,6 +256,7 @@ class _MyItemsPageState extends State<MyItemsPage> {
     void _launchMyCamPage() {
       Navigator.pushNamed(context, myCamPage.routeName);
     }
+
     ///row1
 
     Column buildButtonColumn1(IconData icon, String label, onPress) {
@@ -272,7 +271,7 @@ class _MyItemsPageState extends State<MyItemsPage> {
           ),
           new Container(
             margin:
-            const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
             child: new Text(
               label,
               style: new TextStyle(
@@ -292,7 +291,8 @@ class _MyItemsPageState extends State<MyItemsPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             buildButtonColumn1(Icons.info, 'My Info', _launchMyInfoPage),
-            buildButtonColumn1(Icons.camera, 'Submit An Issue', _launchMyCamPage)
+            buildButtonColumn1(
+                Icons.camera, 'Submit An Issue', _launchMyCamPage)
           ],
         ));
 
@@ -319,7 +319,7 @@ class _MyItemsPageState extends State<MyItemsPage> {
           ),
           new Container(
             margin:
-            const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
             child: new Text(
               label,
               style: new TextStyle(
@@ -338,7 +338,8 @@ class _MyItemsPageState extends State<MyItemsPage> {
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            buildButtonColumn2(Icons.payment, 'Make a Payment', _launchUtilPayURL),
+            buildButtonColumn2(
+                Icons.payment, 'Make a Payment', _launchUtilPayURL),
             buildButtonColumn2(Icons.business, 'Local Companies', null),
           ],
         ));
@@ -352,8 +353,6 @@ class _MyItemsPageState extends State<MyItemsPage> {
     );
 
     ///myInfoButton
-
-
 
     ///page
 
@@ -398,10 +397,7 @@ class MyInfoPage extends StatefulWidget {
 class _MyInfoPageState extends State<MyInfoPage> {
   @override
   Widget build(BuildContext context) {
-
     ///myInfoColumn
-
-
 
     ///page
 
@@ -448,22 +444,34 @@ class _myCamPageState extends State<myCamPage> {
 
     ///imagePicker
 
+    void _mySubmitImagePageState() {
+      Navigator.pushNamed(context, mySubmitImagePage.routeName);
+    }
+
     return new Scaffold(
       appBar: new AppBar(
         actions: <Widget>[
           new ButtonBar(
             children: <Widget>[
               new FlatButton(
-                  onPressed: null, 
-                  child: new Text("Submit"),
+                onPressed: _mySubmitImagePageState,
+                child: new Text(
+                  "Next",
+                  style: new TextStyle(
+                    fontSize: 17.0,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ],
           ),
         ],
-        title: const Text('Your Issue'),
+        title: const Text('Submit Issue'),
       ),
-      body: new Center(
-          child: new FutureBuilder<File>(
+      body: new Container(
+        child: new Column(
+          children: <Widget>[
+            new FutureBuilder<File>(
               future: _imageFile,
               builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
@@ -471,7 +479,28 @@ class _myCamPageState extends State<myCamPage> {
                 } else {
                   return const Text('You have not yet picked an image.');
                 }
-              })),
+              },
+              ),
+        new TextField(
+        textAlign: TextAlign.center,
+        decoration: new InputDecoration.collapsed(
+          hintText: "Username",
+        ),
+        obscureText: false,
+      ),
+
+      new FractionallySizedBox(
+      widthFactor: 0.70666666666, // 265 / 375
+      child: new Container(
+        height: 44.0,
+        child: new Center(child: new Container(child: inputUsername)),
+        decoration: new BoxDecoration(
+            color: Colors.white, borderRadius: new BorderRadius.circular(3.0)),
+      ),
+    ),
+          ]
+        )
+      ),
       floatingActionButton: new FloatingActionButton(
         onPressed: () {
           setState(() {
@@ -484,3 +513,46 @@ class _myCamPageState extends State<myCamPage> {
     );
   }
 }
+
+////Submit an issue page
+
+class mySubmitImagePage extends StatefulWidget {
+  mySubmitImagePage({Key key, this.title}) : super(key: key);
+
+  static const String routeName = "/mySubmitImagePage";
+
+  final String title;
+
+  @override
+  _mySubmitImagePageState createState() => new _mySubmitImagePageState();
+}
+
+/// // 1. After the page has been created, register it with the app routes
+/// routes: <String, WidgetBuilder>{
+///   mySubmitImagePage.routeName: (BuildContext context) => new mySubmitImagePage(title: "mySubmitImagePage"),
+/// },
+///
+/// // 2. Then this could be used to navigate to the page.
+/// Navigator.pushNamed(context, mySubmitImagePage.routeName);
+///
+
+class _mySubmitImagePageState extends State<mySubmitImagePage> {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Submit Issue"),
+      ),
+      body: new Container(
+        child: new Center(
+          child: new Column(
+            children: [
+              new Image(image: null)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
