@@ -30,6 +30,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -51,4 +52,3 @@ dependencies {
     androidTestCompile 'com.android.support.test:rules:0.5'
 }
 
-apply plugin: 'com.google.gms.google-services'

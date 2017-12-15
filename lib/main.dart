@@ -4,33 +4,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sqflite/sqflite.dart';
 
 final Random random = new Random();
-
-final FirebaseAuth _auth = FirebaseAuth.instance;
-final GoogleSignIn _googleSignIn = new GoogleSignIn();
-
-Future<String> _testSignInWithGoogle() async {
-  final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-  final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-  final FirebaseUser user = await _auth.signInWithGoogle(
-    accessToken: googleAuth.accessToken,
-    idToken: googleAuth.idToken,
-  );
-  assert(user.email != null);
-  assert(user.displayName != null);
-  assert(!user.isAnonymous);
-  assert(await user.getIdToken() != null);
-
-  final FirebaseUser currentUser = await _auth.currentUser();
-  assert(user.uid == currentUser.uid);
-
-  return 'signInWithGoogle succeeded: $user';
-}
 
 void main() {
   runApp(new MyApp());
@@ -49,6 +26,8 @@ class MyApp extends StatelessWidget {
           new MyCamPage(title: "myCamPage"),
       MySubmitImagePage.routeName: (BuildContext context) =>
           new MySubmitImagePage(title: "mySubmitImagePage"),
+      RegisterPage.routeName: (BuildContext context) =>
+          new RegisterPage(title: "RegisterPage"),
     };
 
     return new MaterialApp(
@@ -157,11 +136,22 @@ class _MyHomePageState extends State<MyHomePage> {
             child: const Text('Login'),
             onPressed: _loginButton,
           ),
+        ],
+      ),
+    );
+
+    void _regButton() {
+      Navigator.pushNamed(context, RegisterPage.routeName);
+    }
+
+    Widget regButton = new Align(
+      alignment: const Alignment(0.0, -0.2),
+      child: new Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
           new FlatButton(
-            onPressed: _testSignInWithGoogle,
-            child: new Image.asset(
-              'assets/btn_signinwithgoogle.png',
-            ),
+            child: const Text('Register'),
+            onPressed: _regButton,
           ),
         ],
       ),
@@ -204,8 +194,43 @@ class _MyHomePageState extends State<MyHomePage> {
             usernameInput,
             passwordInput,
             loginButton,
+            regButton,
           ],
         ));
+  }
+}
+
+////RegisterPage
+
+class RegisterPage extends StatefulWidget {
+  RegisterPage({Key key, this.title}) : super(key: key);
+
+  static const String routeName = "/RegisterPage";
+
+  final String title;
+
+  @override
+  _RegisterPageState createState() => new _RegisterPageState();
+}
+
+/// // 1. After the page has been created, register it with the app routes
+/// routes: <String, WidgetBuilder>{
+///   RegisterPage.routeName: (BuildContext context) => new RegisterPage(title: "RegisterPage"),
+/// },
+///
+/// // 2. Then this could be used to navigate to the page.
+/// Navigator.pushNamed(context, RegisterPage.routeName);
+///
+
+class _RegisterPageState extends State<RegisterPage> {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(widget.title),
+      ),
+      body: new Container(),
+    );
   }
 }
 
