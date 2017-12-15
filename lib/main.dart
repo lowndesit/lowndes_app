@@ -94,6 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget usernameInput = new FractionallySizedBox(
       widthFactor: 0.70666666666, // 265 / 375
       child: new Container(
+        margin: const EdgeInsets.all(12.0),
         height: 44.0,
         child: new Center(child: new Container(child: inputUsername)),
         decoration: new BoxDecoration(
@@ -114,6 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget passwordInput = new FractionallySizedBox(
       widthFactor: 0.70666666666, // 265 / 375
       child: new Container(
+        margin: const EdgeInsets.all(12.0),
         height: 44.0,
         child: new Center(child: new Container(child: inputPassword)),
         decoration: new BoxDecoration(
@@ -163,9 +165,9 @@ class _MyHomePageState extends State<MyHomePage> {
     Text child2 = new Text("Second");
 
     var pad =
-        const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
+    const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
     var pad2 =
-        const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
+    const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
 
     Padding padding = new Padding(child: child1, padding: pad);
     Padding padding2 = new Padding(child: child2, padding: pad2);
@@ -213,14 +215,113 @@ class RegisterPage extends StatefulWidget {
   _RegisterPageState createState() => new _RegisterPageState();
 }
 
-/// // 1. After the page has been created, register it with the app routes
-/// routes: <String, WidgetBuilder>{
-///   RegisterPage.routeName: (BuildContext context) => new RegisterPage(title: "RegisterPage"),
-/// },
-///
-/// // 2. Then this could be used to navigate to the page.
-/// Navigator.pushNamed(context, RegisterPage.routeName);
-///
+///usernameInput
+
+Widget createUsername = new TextField(
+  textAlign: TextAlign.center,
+  decoration: new InputDecoration.collapsed(
+    hintText: "Choose a Username",
+  ),
+  obscureText: false,
+);
+
+Widget usernameInput = new FractionallySizedBox(
+  widthFactor: 0.9, // 265 / 375
+  child: new Container(
+    margin: const EdgeInsets.all(12.0),
+    height: 44.0,
+    child: new Center(child: new Container(child: createUsername)),
+    decoration: new BoxDecoration(
+        color: Colors.white, borderRadius: new BorderRadius.circular(3.0)),
+  ),
+);
+
+///passwordInput
+
+Widget createPassword = new TextField(
+  textAlign: TextAlign.center,
+  decoration: new InputDecoration.collapsed(
+    hintText: "Choose a Password",
+  ),
+  obscureText: false,
+);
+
+Widget passwordInput = new FractionallySizedBox(
+  widthFactor: 0.9, // 265 / 375
+  child: new Container(
+    margin: const EdgeInsets.all(12.0),
+    height: 44.0,
+    child: new Center(child: new Container(child: createPassword)),
+    decoration: new BoxDecoration(
+        color: Colors.white, borderRadius: new BorderRadius.circular(3.0)),
+  ),
+);
+
+///passwordVerify
+
+Widget verifyPassword = new TextField(
+  textAlign: TextAlign.center,
+  decoration: new InputDecoration.collapsed(
+    hintText: "Verify Password",
+  ),
+  obscureText: false,
+);
+
+Widget passwordVerify = new FractionallySizedBox(
+  widthFactor: 0.9, // 265 / 375
+  child: new Container(
+    margin: const EdgeInsets.all(12.0),
+    height: 44.0,
+    child: new Center(child: new Container(child: verifyPassword)),
+    decoration: new BoxDecoration(
+        color: Colors.white, borderRadius: new BorderRadius.circular(3.0)),
+  ),
+);
+
+///emailEnter
+
+Widget enterEmail = new TextField(
+  textAlign: TextAlign.center,
+  decoration: new InputDecoration.collapsed(
+    hintText: "Enter Email Address",
+  ),
+  obscureText: false,
+);
+
+Widget emailEnter = new FractionallySizedBox(
+  widthFactor: 0.9, // 265 / 375
+  child: new Container(
+    margin: const EdgeInsets.all(12.0),
+    height: 44.0,
+    child: new Center(child: new Container(child: enterEmail)),
+    decoration: new BoxDecoration(
+        color: Colors.white, borderRadius: new BorderRadius.circular(3.0)),
+  ),
+);
+
+
+///emailVerify
+
+Widget verifyEmail = new TextField(
+  textAlign: TextAlign.center,
+  decoration: new InputDecoration.collapsed(
+    hintText: "Verify Email Address",
+  ),
+  obscureText: false,
+);
+
+Widget emailVerify = new FractionallySizedBox(
+  widthFactor: 0.9, // 265 / 375
+  child: new Container(
+    margin: const EdgeInsets.all(12.0),
+    height: 44.0,
+    child: new Center(child: new Container(child: verifyEmail)),
+    decoration: new BoxDecoration(
+        color: Colors.white, borderRadius: new BorderRadius.circular(3.0)),
+  ),
+);
+
+///page
 
 class _RegisterPageState extends State<RegisterPage> {
   @override
@@ -229,7 +330,19 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: new AppBar(
         title: new Text(widget.title),
       ),
-      body: new Container(),
+      body: new Container(
+        child: new Center(
+          child: new Column(
+            children: <Widget>[
+              usernameInput,
+              passwordInput,
+              passwordVerify,
+              emailEnter,
+              emailVerify,
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
@@ -515,6 +628,7 @@ class _MyCamPageState extends State<MyCamPage> {
         title: const Text('Submit Issue'),
       ),
       body: new Container(
+        margin: const EdgeInsets.only(top: 20.0, left: 30.0, right: 210.0, bottom: 20.0),
           child: new Center(
               child: new Column(children: <Widget>[
         futureBuilder,
