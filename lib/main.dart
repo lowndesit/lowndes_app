@@ -45,10 +45,10 @@ class MyApp extends StatelessWidget {
           new MyItemsPage(title: "MyItemsPage"),
       MyInfoPage.routeName: (BuildContext context) =>
           new MyInfoPage(title: "MyInfoPage"),
-      myCamPage.routeName: (BuildContext context) =>
-          new myCamPage(title: "myCamPage"),
-      mySubmitImagePage.routeName: (BuildContext context) =>
-          new mySubmitImagePage(title: "mySubmitImagePage"),
+      MyCamPage.routeName: (BuildContext context) =>
+          new MyCamPage(title: "myCamPage"),
+      MySubmitImagePage.routeName: (BuildContext context) =>
+          new MySubmitImagePage(title: "mySubmitImagePage"),
     };
 
     return new MaterialApp(
@@ -254,7 +254,7 @@ class _MyItemsPageState extends State<MyItemsPage> {
     ///launch CamPage
 
     void _launchMyCamPage() {
-      Navigator.pushNamed(context, myCamPage.routeName);
+      Navigator.pushNamed(context, MyCamPage.routeName);
     }
 
     ///row1
@@ -407,18 +407,18 @@ class _MyInfoPageState extends State<MyInfoPage> {
 
 //// myCamPage
 
-class myCamPage extends StatefulWidget {
-  myCamPage({Key key, this.title}) : super(key: key);
+class MyCamPage extends StatefulWidget {
+  MyCamPage({Key key, this.title}) : super(key: key);
 
   static const String routeName = "/myCamPage";
 
   final String title;
 
   @override
-  _myCamPageState createState() => new _myCamPageState();
+  _MyCamPageState createState() => new _MyCamPageState();
 }
 
-class _myCamPageState extends State<myCamPage> {
+class _MyCamPageState extends State<MyCamPage> {
   Future<File> _imageFile;
 
 
@@ -431,7 +431,7 @@ class _myCamPageState extends State<myCamPage> {
   @override
   Widget build(BuildContext context) {
     void _mySubmitImagePageState() {
-      Navigator.pushNamed(context, mySubmitImagePage.routeName);
+      Navigator.pushNamed(context, MySubmitImagePage.routeName);
     }
 
     ///inputDesc
@@ -510,18 +510,18 @@ class _myCamPageState extends State<myCamPage> {
 
 ////Submit an issue page
 
-class mySubmitImagePage extends StatefulWidget {
-  mySubmitImagePage({Key key, this.title}) : super(key: key);
+class MySubmitImagePage extends StatefulWidget {
+  MySubmitImagePage({Key key, this.title}) : super(key: key);
 
   static const String routeName = "/mySubmitImagePage";
 
   final String title;
 
   @override
-  _mySubmitImagePageState createState() => new _mySubmitImagePageState();
+  _MySubmitImagePageState createState() => new _MySubmitImagePageState();
 }
 
-class _mySubmitImagePageState extends State<mySubmitImagePage> {
+class _MySubmitImagePageState extends State<MySubmitImagePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
