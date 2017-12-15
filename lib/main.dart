@@ -421,6 +421,13 @@ class myCamPage extends StatefulWidget {
 class _myCamPageState extends State<myCamPage> {
   Future<File> _imageFile;
 
+
+  Future<File> get imageFile => _imageFile;
+
+  void test() {
+    _imageFile.then((File image) => null);
+  }
+
   @override
   Widget build(BuildContext context) {
     void _mySubmitImagePageState() {
