@@ -165,9 +165,9 @@ class _MyHomePageState extends State<MyHomePage> {
     Text child2 = new Text("Second");
 
     var pad =
-    const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
+        const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
     var pad2 =
-    const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
+        const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
 
     Padding padding = new Padding(child: child1, padding: pad);
     Padding padding2 = new Padding(child: child2, padding: pad2);
@@ -299,7 +299,6 @@ Widget emailEnter = new FractionallySizedBox(
   ),
 );
 
-
 ///emailVerify
 
 Widget verifyEmail = new TextField(
@@ -330,18 +329,14 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: new AppBar(
         title: new Text(widget.title),
       ),
-      body: new Container(
-        child: new Center(
-          child: new Column(
-            children: <Widget>[
-              usernameInput,
-              passwordInput,
-              passwordVerify,
-              emailEnter,
-              emailVerify,
-            ],
-          ),
-        ),
+      body: new ListView(
+        children: <Widget>[
+          usernameInput,
+          passwordInput,
+          passwordVerify,
+          emailEnter,
+          emailVerify,
+        ],
       ),
     );
   }
@@ -559,7 +554,6 @@ class MyCamPage extends StatefulWidget {
 class _MyCamPageState extends State<MyCamPage> {
   Future<File> _imageFile;
 
-
   Future<File> get imageFile => _imageFile;
 
   void test() {
@@ -628,12 +622,13 @@ class _MyCamPageState extends State<MyCamPage> {
         title: const Text('Submit Issue'),
       ),
       body: new Container(
-        margin: const EdgeInsets.only(top: 20.0, left: 30.0, right: 210.0, bottom: 20.0),
+          margin: const EdgeInsets.only(
+              top: 20.0, left: 30.0, right: 210.0, bottom: 20.0),
           child: new Center(
               child: new Column(children: <Widget>[
-        futureBuilder,
-        issueDesc,
-      ]))),
+            futureBuilder,
+            issueDesc,
+          ]))),
       floatingActionButton: new FloatingActionButton(
         onPressed: () {
           setState(() {
