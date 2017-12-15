@@ -98,6 +98,7 @@ class _home extends State<home> {
       ),
     );
 
+    ///regButton
 
     Widget regButton = new Align(
       alignment: const Alignment(0.0, -0.2),

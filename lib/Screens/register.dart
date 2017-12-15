@@ -10,13 +10,15 @@ import 'package:sqflite/sqflite.dart';
 class register extends StatefulWidget {
   register({Key key, this.title}) : super(key: key);
 
-  static const String routeName = "/RegisterPage";
-
   final String title;
 
   @override
   _register createState() => new _register();
 }
+
+class _register extends State<register> {
+  @override
+  Widget build(BuildContext context) {
 
 ///usernameInput
 
@@ -186,12 +188,9 @@ Widget subBut = new Align(
 
 ///page
 
-class _register extends State<register> {
-  @override
-  Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(widget.title),
+        title: new Text("Register"),
       ),
       body: new ListView(
         children: <Widget>[
