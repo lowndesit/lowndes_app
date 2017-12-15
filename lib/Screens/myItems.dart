@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_app/Screens/home.dart';
+import 'package:flutter_app/Screens/myCam.dart';
+import 'package:flutter_app/Screens/myInfo.dart';
+import 'package:flutter_app/Screens/myItems.dart';
+import 'package:flutter_app/Screens/mySubmit.dart';
+import 'package:flutter_app/Screens/register.dart';
 
 
-class MyItemsPage extends StatefulWidget {
-  MyItemsPage({Key key, this.title}) : super(key: key);
+class myItems extends StatefulWidget {
+  myItems({Key key, this.title}) : super(key: key);
 
   static const String routeName = "/MyItemsPage";
 
   final String title;
 
   @override
-  _MyItemsPageState createState() => new _MyItemsPageState();
+  _myItems createState() => new _myItems();
 }
 
-/// // 1. After the page has been created, register it with the app routes
-/// routes: <String, WidgetBuilder>{
-///   MyItemsPage.routeName: (BuildContext context) => new MyItemsPage(title: "MyItemsPage"),
-/// },
-///
-/// // 2. Then this could be used to navigate to the page.
-/// Navigator.pushNamed(context, MyItemsPage.routeName);
-///
-
-class _MyItemsPageState extends State<MyItemsPage> {
+class _myItems extends State<myItems> {
   @override
   Widget build(BuildContext context) {
     ///launchUtilPayURL

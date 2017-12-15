@@ -7,21 +7,18 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sqflite/sqflite.dart';
 
-
-///Submit an issue page
-
-class MySubmitImagePage extends StatefulWidget {
-  MySubmitImagePage({Key key, this.title}) : super(key: key);
+class mySubmit extends StatefulWidget {
+  mySubmit({Key key, this.title}) : super(key: key);
 
   static const String routeName = "/mySubmitImagePage";
 
   final String title;
 
   @override
-  _MySubmitImagePageState createState() => new _MySubmitImagePageState();
+  _mySubmit createState() => new _mySubmit();
 }
 
-class _MySubmitImagePageState extends State<MySubmitImagePage> {
+class _mySubmit extends State<mySubmit> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

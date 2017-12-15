@@ -11,18 +11,18 @@ import 'package:sqflite/sqflite.dart';
 
 ////MyInfoPage
 
-class MyInfoPage extends StatefulWidget {
-  MyInfoPage({Key key, this.title}) : super(key: key);
+class myInfo extends StatefulWidget {
+  myInfo({Key key, this.title}) : super(key: key);
 
   static const String routeName = "/MyInfoPage";
 
   final String title;
 
   @override
-  _MyInfoPageState createState() => new _MyInfoPageState();
+  _myInfo createState() => new _myInfo();
 }
 
-class _MyInfoPageState extends State<MyInfoPage> {
+class _myInfo extends State<myInfo> {
   @override
   Widget build(BuildContext context) {
     ///myInfoColumn

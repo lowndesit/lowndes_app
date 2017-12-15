@@ -11,18 +11,18 @@ import 'package:sqflite/sqflite.dart';
 
 //// myCamPage
 
-class MyCamPage extends StatefulWidget {
-  MyCamPage({Key key, this.title}) : super(key: key);
+class myCam extends StatefulWidget {
+  myCam({Key key, this.title}) : super(key: key);
 
   static const String routeName = "/myCamPage";
 
   final String title;
 
   @override
-  _MyCamPageState createState() => new _MyCamPageState();
+  _myCam createState() => new _myCam();
 }
 
-class _MyCamPageState extends State<MyCamPage> {
+class _myCam extends State<myCam> {
   Future<File> _imageFile;
 
   Future<File> get imageFile => _imageFile;

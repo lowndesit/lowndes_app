@@ -1,46 +1,15 @@
-import 'dart:async';
-import 'dart:io';
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:sqflite/sqflite.dart';
 
-final Random random = new Random();
-
-void main() {
-  runApp(new MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    var routes = <String, WidgetBuilder>{
-    };
-
-    return new MaterialApp(
-      title: 'Lowndes County Mobile App',
-      theme: new ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: new MyHomePage(title: 'Lowndes County Mobile App'),
-      routes: routes,
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class home extends StatefulWidget {
+  home({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _home createState() => new _home();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _home extends State<home> {
   @override
   Widget build(BuildContext context) {
     ///titleSection
@@ -121,9 +90,9 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           new FlatButton(
-            child: const Text('Login'),
-            onPressed: (){Navigator.of(context).pushNamed('/myItems');
-            }
+              child: const Text('Login'),
+              onPressed: (){Navigator.of(context).pushNamed('/myItems');
+              }
           ),
         ],
       ),
@@ -136,9 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           new FlatButton(
-            child: const Text('Register'),
-            onPressed: (){Navigator.of(context).pushNamed('/register');
-            }
+              child: const Text('Register'),
+              onPressed: (){Navigator.of(context).pushNamed('/register');
+              }
           ),
         ],
       ),
@@ -150,9 +119,9 @@ class _MyHomePageState extends State<MyHomePage> {
     Text child2 = new Text("Second");
 
     var pad =
-        const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
+    const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
     var pad2 =
-        const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
+    const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
 
     Padding padding = new Padding(child: child1, padding: pad);
     Padding padding2 = new Padding(child: child2, padding: pad2);

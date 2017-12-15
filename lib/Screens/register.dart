@@ -7,19 +7,15 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sqflite/sqflite.dart';
 
-
-
-
-
-class RegisterPage extends StatefulWidget {
-  RegisterPage({Key key, this.title}) : super(key: key);
+class register extends StatefulWidget {
+  register({Key key, this.title}) : super(key: key);
 
   static const String routeName = "/RegisterPage";
 
   final String title;
 
   @override
-  _RegisterPageState createState() => new _RegisterPageState();
+  _register createState() => new _register();
 }
 
 ///usernameInput
@@ -190,7 +186,7 @@ Widget subBut = new Align(
 
 ///page
 
-class _RegisterPageState extends State<RegisterPage> {
+class _register extends State<register> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
