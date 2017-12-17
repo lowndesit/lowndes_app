@@ -5,6 +5,7 @@ import 'package:flutter_app/Screens/myInfo.dart';
 import 'package:flutter_app/Screens/myItems.dart';
 import 'package:flutter_app/Screens/mySubmit.dart';
 import 'package:flutter_app/Screens/register.dart';
+import 'package:flutter_app/Screens/drawer.dart';
 
 
 void main() {
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return new MaterialApp(
       title: 'Lowndes County Mobile App',
       theme: new ThemeData(

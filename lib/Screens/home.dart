@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Screens/drawer.dart';
 
 class home extends StatefulWidget {
   home({Key key, this.title}) : super(key: key);
@@ -10,8 +11,11 @@ class home extends StatefulWidget {
 }
 
 class _home extends State<home> {
+
   @override
   Widget build(BuildContext context) {
+    drawer;
+
     ///titleSection
 
     Widget titleSection = new Container(
@@ -114,24 +118,6 @@ class _home extends State<home> {
       ),
     );
 
-    ///drawer
-
-    Text child1 = new Text("First");
-    Text child2 = new Text("Second");
-
-    var pad =
-    const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
-    var pad2 =
-    const EdgeInsets.only(left: 8.0, bottom: 8.0, right: 8.0, top: 50.0);
-
-    Padding padding = new Padding(child: child1, padding: pad);
-    Padding padding2 = new Padding(child: child2, padding: pad2);
-
-    var children = [padding, padding2];
-
-    ListView listView = new ListView(children: children);
-
-    Drawer drawer = new Drawer(child: listView);
 
     /// Page
     return new Scaffold(

@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:flutter_app/Screens/drawer.dart';
 
 class register extends StatefulWidget {
   register({Key key, this.title}) : super(key: key);
@@ -19,6 +20,7 @@ class register extends StatefulWidget {
 class _register extends State<register> {
   @override
   Widget build(BuildContext context) {
+    drawer;
 
 ///usernameInput
 
@@ -125,7 +127,7 @@ Widget emailVerify = new FractionallySizedBox(
   ),
 );
 
-///Firstname
+///FirstName
 
 Widget fName = new TextField(
   textAlign: TextAlign.center,
@@ -189,6 +191,7 @@ Widget subBut = new Align(
 ///page
 
     return new Scaffold(
+      drawer: drawer,
       appBar: new AppBar(
         title: new Text("Register"),
       ),

@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:flutter_app/Screens/drawer.dart';
 
 
 
@@ -33,7 +34,7 @@ class _myCam extends State<myCam> {
 
   @override
   Widget build(BuildContext context) {
-
+    drawer:
     ///inputDesc
 
     Widget inputIssueDesc = new TextField(
@@ -70,6 +71,7 @@ class _myCam extends State<myCam> {
     ///page
 
     return new Scaffold(
+      drawer: drawer,
       appBar: new AppBar(
         actions: <Widget>[
           new ButtonBar(

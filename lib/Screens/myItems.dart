@@ -6,6 +6,7 @@ import 'package:flutter_app/Screens/myInfo.dart';
 import 'package:flutter_app/Screens/myItems.dart';
 import 'package:flutter_app/Screens/mySubmit.dart';
 import 'package:flutter_app/Screens/register.dart';
+import 'package:flutter_app/Screens/drawer.dart';
 
 
 class myItems extends StatefulWidget {
@@ -22,6 +23,7 @@ class myItems extends StatefulWidget {
 class _myItems extends State<myItems> {
   @override
   Widget build(BuildContext context) {
+    drawer;
     ///launchUtilPayURL
 
     _launchUtilPayURL() async {
@@ -134,6 +136,7 @@ class _myItems extends State<myItems> {
     ///page
 
     return new Scaffold(
+      drawer: drawer,
       appBar: new AppBar(
         title: new Text('Homepage'),
       ),

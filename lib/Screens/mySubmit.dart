@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:flutter_app/Screens/drawer.dart';
 
 class mySubmit extends StatefulWidget {
   mySubmit({Key key, this.title}) : super(key: key);
@@ -21,7 +22,9 @@ class mySubmit extends StatefulWidget {
 class _mySubmit extends State<mySubmit> {
   @override
   Widget build(BuildContext context) {
+    drawer;
     return new Scaffold(
+      drawer: drawer,
       appBar: new AppBar(
         title: new Text("Submit Issue"),
       ),

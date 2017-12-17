@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:flutter_app/Screens/drawer.dart';
 
 
 
@@ -25,11 +26,11 @@ class myInfo extends StatefulWidget {
 class _myInfo extends State<myInfo> {
   @override
   Widget build(BuildContext context) {
-    ///myInfoColumn
-
+    drawer;
     ///page
 
     return new Scaffold(
+      drawer: drawer,
       appBar: new AppBar(
         title: new Text("My Info"),
       ),
