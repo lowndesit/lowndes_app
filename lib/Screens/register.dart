@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:flutter_app/Screens/drawer.dart';
+import 'package:mailer/mailer.dart';
 
 class register extends StatefulWidget {
   register({Key key, this.title}) : super(key: key);

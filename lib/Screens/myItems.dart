@@ -38,14 +38,13 @@ class _myItems extends State<myItems> {
 
     ///row1
 
-    Column buildButtonColumn1(IconData icon, String label, onPress) {
+    ListView buildButtonColumn(IconData icon, String label, onPress) {
       Color color = Theme.of(context).primaryColor;
 
-      return new Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      return new ListView(
         children: <Widget>[
           new IconButton(
-            icon: new Icon(icon, color: color, size: 50.0),
+            icon: new Icon(icon, color: color, size: 20.0),
             onPressed: onPress,
           ),
           new Container(
@@ -65,12 +64,13 @@ class _myItems extends State<myItems> {
     }
 
     Widget buttonRow1 = new Container(
+      margin: const EdgeInsets.all(2.0),
         padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 40.0),
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            buildButtonColumn1(Icons.info, 'My Info', (){Navigator.of(context).pushNamed('/myInfo');}),
-            buildButtonColumn1(
+            buildButtonColumn(Icons.info, 'My Info', (){Navigator.of(context).pushNamed('/myInfo');}),
+            buildButtonColumn(
                 Icons.camera, 'Submit An Issue', (){Navigator.of(context).pushNamed('/myCam');})
           ],
         ));
@@ -85,41 +85,16 @@ class _myItems extends State<myItems> {
 
     ///row2
 
-    Column buildButtonColumn2(IconData icon, String label, onPress) {
-      Color color = Theme.of(context).primaryColor;
 
-      return new Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          new IconButton(
-            icon: new Icon(icon, color: color, size: 50.0),
-            onPressed: onPress,
-          ),
-          new Container(
-            margin:
-            const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
-            child: new Text(
-              label,
-              style: new TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w400,
-                color: color,
-              ),
-            ),
-          ),
-        ],
-      );
-    }
 
     Widget buttonRow2 = new Container(
         padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 20.0),
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            buildButtonColumn2(
+            buildButtonColumn(
                 Icons.payment, 'Make a Payment', _launchUtilPayURL),
-            buildButtonColumn2(Icons.business, 'Local Companies', null),
+            buildButtonColumn(Icons.business, 'Local Companies', null),
           ],
         ));
 
