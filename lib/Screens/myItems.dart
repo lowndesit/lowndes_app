@@ -38,10 +38,10 @@ class _myItems extends State<myItems> {
 
     ///row1
 
-    ListView buildButtonColumn(IconData icon, String label, onPress) {
+    Column buildButtonColumn(IconData icon, String label, onPress) {
       Color color = Theme.of(context).primaryColor;
 
-      return new ListView(
+      return new Column(
         children: <Widget>[
           new IconButton(
             icon: new Icon(icon, color: color, size: 20.0),
